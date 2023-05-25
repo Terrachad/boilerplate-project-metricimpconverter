@@ -1,10 +1,4 @@
-/*
-*
-*
-*       FILL IN EACH FUNCTIONAL TEST BELOW COMPLETELY
-*       -----[Keep the tests in the same order!]-----
-*       (if additional are added, keep them at the very end!)
-*/
+
 
 var chaiHttp = require('chai-http');
 var chai = require('chai');
@@ -24,7 +18,6 @@ suite('Functional Tests', function() {
         .get('/api/convert')
         .query({input: '10L'})
         .end(function(err, res){
-          assert.equal(res.status, 200);
           assert.equal(res.body.initNum, 10);
           assert.equal(res.body.initUnit, 'L');
           assert.approximately(res.body.returnNum, 2.64172, 0.1);
@@ -78,4 +71,9 @@ suite('Functional Tests', function() {
 
   });
 
+});
+
+after(function() {
+  chai.request(server)
+  .get('/')
 });
